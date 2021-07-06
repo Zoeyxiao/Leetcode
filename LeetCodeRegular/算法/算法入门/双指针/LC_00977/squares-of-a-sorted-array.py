@@ -25,4 +25,43 @@ class Solution:
             res.append(pow(nums[i],2))
         res.sort()
         return res
+       
+#解法二：双指针，主要需要利用题目中数组是以非降序排列这一条件
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        left, right = [], []
+        res = []
+        for i in range(n):
+            if nums[i] > 0:
+                right.append(pow(nums[i],2))
+            else:
+                left.append(pow(nums[i],2))
+        m = len(right)
+        k = len(left)
+        if m == 0:
+            return left[::-1]
+        else:
+            i = 0
+            j = k-1
+            while i < m  or j >= 0:
+                if j < 0:
+                    res.append(right[i])
+                    i += 1
+                elif i == m:
+                    res.append(left[j])
+                    j -= 1
+                elif right[i] < left[j]:
+                    res.append(right[i])
+                    i += 1
+                else:
+                    res.append(left[j])
+                    j -= 1
+            return res
+                
+
+###代码还是不够简介，引入大量的中间list，代码还可以进一步优化
+
+        
+        
             
