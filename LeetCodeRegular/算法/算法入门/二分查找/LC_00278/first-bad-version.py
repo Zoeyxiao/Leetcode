@@ -39,3 +39,20 @@ class Solution:
                 res = mid
                 right = mid - 1
         return res    
+       
+class Solution:     
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        left, right = 0, n+1
+        while left < right:
+            mid = (left + right) // 2
+            if isBadVersion(mid) is False:
+                left = mid + 1
+                #mid = ((left + right) // 2)
+            elif isBadVersion(mid) is True and isBadVersion(mid-1) is True:
+                right = mid
+            else:
+                return mid
