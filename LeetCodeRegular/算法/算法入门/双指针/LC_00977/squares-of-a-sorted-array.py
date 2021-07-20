@@ -44,7 +44,7 @@ class Solution:
         else:
             i = 0
             j = k-1
-            while i < m  or j >= 0:
+            while i < m  or j >= 0: #这个条件很重要，因为左右子列的长度不一样，因此任一一个子列没有遍历结束，都要继续循环，这里用"或"逻辑来实现
                 if j < 0:
                     res.append(right[i])
                     i += 1
