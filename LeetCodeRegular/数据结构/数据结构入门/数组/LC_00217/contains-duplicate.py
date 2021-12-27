@@ -12,3 +12,14 @@ class Solution:
 #set()不允许存在重复元素，因此，若长度不一致返回true；反之，返回False;
 #但上述代码不是这道题考察的数据结构，所以下面尝试从排序的角度重新编写代码；
 
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        for i in range(0, len(nums)-1):
+            if nums[i] == nums[i+1]:
+                return True
+        return False    #这里要注意不能把判定放在for循环里，如[0]这种集合情况
+    
+    
+  
+
