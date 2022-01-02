@@ -41,4 +41,4 @@ class Solution:
             head = head.next
         return False
       
-#链接+哈希表的思路
+#链表+哈希表的思路
