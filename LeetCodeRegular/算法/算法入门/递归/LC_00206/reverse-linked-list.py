@@ -35,3 +35,26 @@ class Solution:
             pre = cur
             cur = mid
         return pre
+       
+ #重新做到这个题时，发现可以采用栈的方式进行解答，代码如下：
+ # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        stack = []    
+        while head:
+            stack.append(head)
+            head = head.next
+        m = len(stack)
+        if m == 0:
+            return None
+        curr = head = stack.pop() #重新开始建立链表指针，注意保留head
+        while len(stack) != 0:
+            curr.next = stack.pop()
+            curr = curr.next
+        curr.next = None
+        return head
+        
